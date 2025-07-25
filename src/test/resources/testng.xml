@@ -1,0 +1,58 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Web Automation Suite" verbose="1" parallel="tests" thread-count="2">
+
+    <!-- Global parameters available to all tests -->
+    <parameter name="browser" value="chrome"/>
+    <parameter name="headless" value="false"/>
+    <parameter name="timeout" value="10"/>
+
+    <!-- Test Group for Signup Functionality -->
+    <test name="Signup Page Tests" preserve-order="true">
+        <parameter name="page" value="signup"/>
+        <classes>
+            <class name="tests.SignupTest">
+                <methods>
+                    <include name="testSuccessfulSignup"/>
+                    <include name="testInvalidSignup"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <!-- Test Group for Login Functionality -->
+    <test name="Login Page Tests" preserve-order="true">
+        <parameter name="page" value="login"/>
+        <classes>
+            <class name="tests.LoginTest">
+                <methods>
+                    <include name="testSuccessfulLogin"/>
+                    <include name="testInvalidLogin"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <!-- Test Group for Cross-Browser Testing (Example) -->
+    <!--
+    <test name="Chrome Tests">
+        <parameter name="browser" value="chrome"/>
+        <classes>
+            <class name="com.example.tests.LoginTest"/>
+            <class name="com.example.tests.SignupTest"/>
+        </classes>
+    </test>
+
+    <test name="Firefox Tests">
+        <parameter name="browser" value="firefox"/>
+        <classes>
+            <class name="com.example.tests.LoginTest"/>
+            <class name="com.example.tests.SignupTest"/>
+        </classes>
+    </test>
+    -->
+
+    <!-- Suite-level configuration -->
+    <suite-files>
+        <!-- Additional suite files can be included here -->
+    </suite-files>
+</suite>

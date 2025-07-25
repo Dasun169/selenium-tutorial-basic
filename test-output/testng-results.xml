@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="3" passed="3" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2025-07-25T22:40:42 IST" name="Command line suite" finished-at="2025-07-25T22:42:08 IST" duration-ms="85459">
+    <groups>
+    </groups>
+    <test started-at="2025-07-25T22:40:42 IST" name="Command line test" finished-at="2025-07-25T22:42:08 IST" duration-ms="85459">
+      <class name="tests.LoginTest">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:tests.LoginTest@548ad73b]" started-at="2025-07-25T22:41:36 IST" name="setUp" finished-at="2025-07-25T22:41:44 IST" duration-ms="7862" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="testInvalidLogin()[pri:0, instance:tests.LoginTest@548ad73b]" started-at="2025-07-25T22:41:44 IST" name="testInvalidLogin" finished-at="2025-07-25T22:41:51 IST" duration-ms="7780" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testInvalidLogin -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:tests.LoginTest@548ad73b]" started-at="2025-07-25T22:41:51 IST" name="tearDown" finished-at="2025-07-25T22:41:52 IST" duration-ms="433" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:tests.LoginTest@548ad73b]" started-at="2025-07-25T22:41:52 IST" name="setUp" finished-at="2025-07-25T22:42:00 IST" duration-ms="7798" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="testLoginAfterSignup()[pri:0, instance:tests.LoginTest@548ad73b]" started-at="2025-07-25T22:42:00 IST" name="testLoginAfterSignup" finished-at="2025-07-25T22:42:07 IST" depends-on-methods="tests.SignupTest.testSuccessfulSignup" duration-ms="7775" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testLoginAfterSignup -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:tests.LoginTest@548ad73b]" started-at="2025-07-25T22:42:07 IST" name="tearDown" finished-at="2025-07-25T22:42:08 IST" duration-ms="454" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- tests.LoginTest -->
+      <class name="tests.SignupTest">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:tests.SignupTest@553a3d88]" started-at="2025-07-25T22:40:43 IST" name="setUp" finished-at="2025-07-25T22:40:52 IST" duration-ms="9464" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="testSuccessfulSignup()[pri:0, instance:tests.SignupTest@553a3d88]" started-at="2025-07-25T22:40:52 IST" name="testSuccessfulSignup" finished-at="2025-07-25T22:41:35 IST" duration-ms="43121" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testSuccessfulSignup -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:tests.SignupTest@553a3d88]" started-at="2025-07-25T22:41:35 IST" name="tearDown" finished-at="2025-07-25T22:41:36 IST" duration-ms="676" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- tests.SignupTest -->
+    </test> <!-- Command line test -->
+  </suite> <!-- Command line suite -->
+</testng-results>
