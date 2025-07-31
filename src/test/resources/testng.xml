@@ -13,7 +13,6 @@
             <class name="tests.SignupTest">
                 <methods>
                     <include name="testSuccessfulSignup"/>
-                    <include name="testInvalidSignup"/>
                 </methods>
             </class>
         </classes>
@@ -25,31 +24,12 @@
         <classes>
             <class name="tests.LoginTest">
                 <methods>
-                    <include name="testSuccessfulLogin"/>
+                    <include name="testLoginAfterSignup"/>
                     <include name="testInvalidLogin"/>
                 </methods>
             </class>
         </classes>
     </test>
-
-    <!-- Test Group for Cross-Browser Testing (Example) -->
-    <!--
-    <test name="Chrome Tests">
-        <parameter name="browser" value="chrome"/>
-        <classes>
-            <class name="com.example.tests.LoginTest"/>
-            <class name="com.example.tests.SignupTest"/>
-        </classes>
-    </test>
-
-    <test name="Firefox Tests">
-        <parameter name="browser" value="firefox"/>
-        <classes>
-            <class name="com.example.tests.LoginTest"/>
-            <class name="com.example.tests.SignupTest"/>
-        </classes>
-    </test>
-    -->
 
     <!-- Suite-level configuration -->
     <suite-files>

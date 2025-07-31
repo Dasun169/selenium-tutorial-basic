@@ -4,18 +4,6 @@
   <parameter name="headless" value="false"/>
   <parameter name="browser" value="chrome"/>
   <parameter name="timeout" value="10"/>
-  <test thread-count="2" parallel="tests" name="Signup Page Tests(failed)">
-    <parameter name="page" value="signup"/>
-    <classes>
-      <class name="tests.SignupTest">
-        <methods>
-          <include name="setUp"/>
-          <include name="tearDown"/>
-          <include name="testSuccessfulSignup"/>
-        </methods>
-      </class> <!-- tests.SignupTest -->
-    </classes>
-  </test> <!-- Signup Page Tests(failed) -->
   <test thread-count="2" parallel="tests" name="Login Page Tests(failed)">
     <parameter name="page" value="login"/>
     <classes>
@@ -28,4 +16,16 @@
       </class> <!-- tests.LoginTest -->
     </classes>
   </test> <!-- Login Page Tests(failed) -->
+  <test thread-count="2" parallel="tests" name="Signup Page Tests(failed)">
+    <parameter name="page" value="signup"/>
+    <classes>
+      <class name="tests.SignupTest">
+        <methods>
+          <include name="setUp"/>
+          <include name="tearDown"/>
+          <include name="testSuccessfulSignup"/>
+        </methods>
+      </class> <!-- tests.SignupTest -->
+    </classes>
+  </test> <!-- Signup Page Tests(failed) -->
 </suite> <!-- Failed suite [Web Automation Suite] -->
