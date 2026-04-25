@@ -12,7 +12,7 @@ public class SignupTest extends BaseTest {
     public static String signupPassword;
     public static String phoneNumber;
 
-    @Test
+    @Test(groups = {"signup", "smoke", "regression"})
     public void testSuccessfulSignup() throws InterruptedException {
         SignupPage signupPage = new SignupPage(driver);
         signupPage.clickSignUpButton(driver);
@@ -35,10 +35,10 @@ public class SignupTest extends BaseTest {
                     ". Password should have at least 8 characters, one uppercase letter, one digit, and one special character.");
         }
 
-        signupPage.fillSignupForm(driver,"John", "Doe", signupEmail, phoneNumber, signupPassword);
-        try{
+        signupPage.fillSignupForm(driver, "John", "Doe", signupEmail, phoneNumber, signupPassword);
+        try {
             signupPage.clickSignup();
-        }catch (TimeoutException e){
+        } catch (TimeoutException e) {
             System.out.println("Unable to click the Sign up button");
         }
         signupPage.scrollAndClickLogout(driver);
@@ -58,6 +58,6 @@ public class SignupTest extends BaseTest {
         return password.length() >= 8 &&
                 password.matches(".*[A-Z].*") &&
                 password.matches(".*[0-9].*") &&
-                password.matches(".*[!@#$%^&*()_+=|<>?{}\\\\[\\\\]~-].*");
+                password.matches(".*[!@#$%^&*()_+=|<>?{}\\\\\\\\~-].*");
     }
 }

@@ -1,11 +1,12 @@
 package tests;
+
 import base.BaseTest;
 import org.example.pages.LoginPage;
 import org.testng.annotations.Test;
 
 public class LoginTest extends BaseTest {
 
-    @Test(dependsOnMethods = "tests.SignupTest.testSuccessfulSignup")
+    @Test(dependsOnGroups = "signup", groups = {"smoke", "regression"})
     public void testLoginAfterSignup() {
         LoginPage loginPage = new LoginPage(driver);
         loginPage.clickLoginButton(driver);
@@ -14,14 +15,14 @@ public class LoginTest extends BaseTest {
         loginPage.clickLogin();
     }
 
-    @Test
+    @Test(groups = {"regression"})
     public void testInvalidLogin() {
         LoginPage loginPage = new LoginPage(driver);
         loginPage.clickLoginButton(driver);
         loginPage.enterEmail("invalid@example.com");
         loginPage.enterPassword("wrongPassword");
         loginPage.clickLogin();
-        if (loginPage.isErrorMessageDisplayed()){
+        if (loginPage.isErrorMessageDisplayed()) {
             System.out.println("Login Failed or invalid login. Please try again!");
         }
     }

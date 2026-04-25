@@ -1,6 +1,6 @@
 package org.example.pages;
 
-import org.example.constants.AppConstants;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -11,22 +11,30 @@ import java.time.Duration;
 
 public class LoginPage extends BasePage {
 
-    @FindBy(xpath = AppConstants.EMAIL_LOGIN)
+    // Locators
+    private static final String EMAIL_LOGIN = "//input[@id='emailField']";
+    private static final String PASSWORD_LOGIN = "//input[@id='pwFiled']";
+    private static final String LOGIN_BUTTON = "//button[@id='login-button']";
+    private static final String ERROR_MESSAGE = "//div[@class='alert alert-danger' and @role='alert']";
+    private static final String HAMBURG = "//button[@id='HeaderLinksDesktopMenu']";
+    private static final String LOGIN_BUTTON_FROM_HAM = "//a[@id='HeaderLinksLogin1']";
+
+    @FindBy(xpath = EMAIL_LOGIN)
     private WebElement emailInput;
 
-    @FindBy(xpath = AppConstants.PASSWORD_LOGIN)
+    @FindBy(xpath = PASSWORD_LOGIN)
     private WebElement passwordInput;
 
-    @FindBy(xpath = AppConstants.LOGIN_BUTTON)
+    @FindBy(xpath = LOGIN_BUTTON)
     private WebElement loginButton;
 
-    @FindBy(xpath = AppConstants.ERROR_MESSAGE)
+    @FindBy(xpath = ERROR_MESSAGE)
     private WebElement errorMessage;
 
-    @FindBy(xpath = AppConstants.HAMBURG)
+    @FindBy(xpath = HAMBURG)
     private WebElement hamburg;
 
-    @FindBy(xpath = AppConstants.LOGIN_BUTTON_FROM_HAM)
+    @FindBy(xpath = LOGIN_BUTTON_FROM_HAM)
     private WebElement loginFromHam;
 
     public LoginPage(WebDriver driver) {

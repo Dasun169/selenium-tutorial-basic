@@ -1,7 +1,5 @@
 package org.example.pages;
 
-import org.example.constants.AppConstants;
-import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -13,37 +11,50 @@ import java.time.Duration;
 
 public class SignupPage extends BasePage {
 
-    @FindBy(xpath = AppConstants.FIRST_NAME_INPUT)
+    // Locators
+    private static final String FIRST_NAME_INPUT = "//input[@id=\"fname\"]";
+    private static final String LAST_NAME_INPUT = "//input[@id=\"lanme\"]";
+    private static final String EMAIL_REGISTER = "//input[@id=\"email\"]";
+    private static final String MOBILE_NUMBER = "//input[@id=\"mobileNum\"]";
+    private static final String PASSWORD_REGISTER = "//input[@id=\"pw\"]";
+    private static final String SIGNUP_BUTTON = "//button[@id=\"submit\"]";
+    private static final String HAMBURG = "//button[@id='HeaderLinksDesktopMenu']";
+    private static final String SIGN_UP_BUTTON_FROM_HAM = "//a[@id='HeaderLinksLogin2']";
+    private static final String SIGN_UP_WITH_EMAIL = "//a[@id='continue_with_email_signup']";
+    private static final String PROFILE_SIDEBAR_XPATH = "//div[@class='n-s-a accordion']";
+    private static final String LOGOUT_LINK_XPATH = "//a[@id='SideBarLinkSign']";
+
+    @FindBy(xpath = FIRST_NAME_INPUT)
     private WebElement firstNameInput;
 
-    @FindBy(xpath = AppConstants.LAST_NAME_INPUT)
+    @FindBy(xpath = LAST_NAME_INPUT)
     private WebElement lastNameInput;
 
-    @FindBy(xpath = AppConstants.EMAIL_REGISTER)
+    @FindBy(xpath = EMAIL_REGISTER)
     private WebElement emailInput;
 
-    @FindBy(xpath = AppConstants.MOBILE_NUMBER)
+    @FindBy(xpath = MOBILE_NUMBER)
     private WebElement mobileNumber;
 
-    @FindBy(xpath = AppConstants.PASSWORD_REGISTER)
+    @FindBy(xpath = PASSWORD_REGISTER)
     private WebElement passwordInput;
 
-    @FindBy(xpath = AppConstants.SIGNUP_BUTTON)
+    @FindBy(xpath = SIGNUP_BUTTON)
     private WebElement signupButton;
 
-    @FindBy(xpath = AppConstants.SIGN_UP_BUTTON_FROM_HAM)
+    @FindBy(xpath = SIGN_UP_BUTTON_FROM_HAM)
     private WebElement sign_up_from_ham;
 
-    @FindBy(xpath = AppConstants.HAMBURG)
+    @FindBy(xpath = HAMBURG)
     private WebElement hamburg;
 
-    @FindBy(xpath = AppConstants.SIGN_UP_WITH_EMAIL)
+    @FindBy(xpath = SIGN_UP_WITH_EMAIL)
     private WebElement sign_up_with_email;
 
-    @FindBy(xpath = AppConstants.PROFILE_SIDEBAR_XPATH)
+    @FindBy(xpath = PROFILE_SIDEBAR_XPATH)
     private WebElement profile_section;
 
-    @FindBy(xpath = AppConstants.LOGOUT_LINK_XPATH)
+    @FindBy(xpath = LOGOUT_LINK_XPATH)
     private WebElement sign_out_button;
 
     public SignupPage(WebDriver driver) {
@@ -59,28 +70,29 @@ public class SignupPage extends BasePage {
         wait.until(ExpectedConditions.elementToBeClickable(sign_up_with_email)).click();
     }
 
-    public void fillSignupForm(WebDriver driver, String firstName, String lastName, String email, String mobile, String password) throws InterruptedException {
+    public void fillSignupForm(WebDriver driver, String firstName, String lastName, String email, String mobile,
+            String password) throws InterruptedException {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
-            Thread.sleep(1000);
-            wait.until(ExpectedConditions.visibilityOf(firstNameInput)).sendKeys(firstName);
-            Thread.sleep(1000);
+        Thread.sleep(1000);
+        wait.until(ExpectedConditions.visibilityOf(firstNameInput)).sendKeys(firstName);
+        Thread.sleep(1000);
 
-            Thread.sleep(1000);
-            wait.until(ExpectedConditions.visibilityOf(lastNameInput)).sendKeys(lastName);
-            Thread.sleep(1000);
+        Thread.sleep(1000);
+        wait.until(ExpectedConditions.visibilityOf(lastNameInput)).sendKeys(lastName);
+        Thread.sleep(1000);
 
-            Thread.sleep(1000);
-            wait.until(ExpectedConditions.visibilityOf(emailInput)).sendKeys(email);
-            Thread.sleep(1000);
+        Thread.sleep(1000);
+        wait.until(ExpectedConditions.visibilityOf(emailInput)).sendKeys(email);
+        Thread.sleep(1000);
 
-            Thread.sleep(1000);
-            wait.until(ExpectedConditions.visibilityOf(mobileNumber)).sendKeys(mobile);
-            Thread.sleep(1000);
+        Thread.sleep(1000);
+        wait.until(ExpectedConditions.visibilityOf(mobileNumber)).sendKeys(mobile);
+        Thread.sleep(1000);
 
-            Thread.sleep(1000);
-            wait.until(ExpectedConditions.visibilityOf(passwordInput)).sendKeys(password);
-            Thread.sleep(1000);
+        Thread.sleep(1000);
+        wait.until(ExpectedConditions.visibilityOf(passwordInput)).sendKeys(password);
+        Thread.sleep(1000);
     }
 
     public void clickSignup() {
@@ -104,4 +116,3 @@ public class SignupPage extends BasePage {
         Thread.sleep(10000);
     }
 }
-
