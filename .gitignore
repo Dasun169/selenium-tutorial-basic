@@ -3,14 +3,18 @@ target/
 !**/src/main/**/target/
 !**/src/test/**/target/
 
+# Test Reports
+test-output/
+allure-results/
+allure-report/
+allure-maven-plugin/
+
 ### IntelliJ IDEA ###
-.idea/modules.xml
-.idea/jarRepositories.xml
-.idea/compiler.xml
-.idea/libraries/
+.idea/
 *.iws
 *.iml
 *.ipr
+out/
 
 ### Eclipse ###
 .apt_generated
