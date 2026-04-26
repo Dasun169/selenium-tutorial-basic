@@ -13,7 +13,7 @@ public class SignupTest extends BaseTest {
     public static String phoneNumber;
 
     @Test(groups = {"signup", "smoke", "regression"})
-    public void testSuccessfulSignup() throws InterruptedException {
+    public void testSuccessfulSignup() {
         SignupPage signupPage = new SignupPage(driver);
         signupPage.clickSignUpButton(driver);
 

@@ -71,48 +71,30 @@ public class SignupPage extends BasePage {
     }
 
     public void fillSignupForm(WebDriver driver, String firstName, String lastName, String email, String mobile,
-            String password) throws InterruptedException {
+            String password) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
-        Thread.sleep(1000);
         wait.until(ExpectedConditions.visibilityOf(firstNameInput)).sendKeys(firstName);
-        Thread.sleep(1000);
-
-        Thread.sleep(1000);
         wait.until(ExpectedConditions.visibilityOf(lastNameInput)).sendKeys(lastName);
-        Thread.sleep(1000);
-
-        Thread.sleep(1000);
         wait.until(ExpectedConditions.visibilityOf(emailInput)).sendKeys(email);
-        Thread.sleep(1000);
-
-        Thread.sleep(1000);
         wait.until(ExpectedConditions.visibilityOf(mobileNumber)).sendKeys(mobile);
-        Thread.sleep(1000);
-
-        Thread.sleep(1000);
         wait.until(ExpectedConditions.visibilityOf(passwordInput)).sendKeys(password);
-        Thread.sleep(1000);
     }
 
     public void clickSignup() {
         signupButton.click();
     }
 
-    public void scrollAndClickLogout(WebDriver driver) throws InterruptedException {
+    public void scrollAndClickLogout(WebDriver driver) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
-        Thread.sleep(2000);
         wait.until(ExpectedConditions.elementToBeClickable(hamburg)).click();
-        Thread.sleep(2000);
 
-        WebElement profileSectionElement = wait.until(ExpectedConditions.elementToBeClickable(profile_section));
+        WebElement profileSectionElement = wait.until(ExpectedConditions.visibilityOf(profile_section));
 
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", profileSectionElement);
 
         WebElement signOutButtonElement = wait.until(ExpectedConditions.elementToBeClickable(sign_out_button));
         signOutButtonElement.click();
-
-        Thread.sleep(10000);
     }
 }

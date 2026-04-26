@@ -6,7 +6,7 @@ import org.testng.annotations.Test;
 
 public class LoginTest extends BaseTest {
 
-    @Test(dependsOnGroups = "signup", groups = {"smoke", "regression"})
+    @Test(dependsOnMethods = "testSuccessfulSignup", groups = { "smoke", "regression" })
     public void testLoginAfterSignup() {
         LoginPage loginPage = new LoginPage(driver);
         loginPage.clickLoginButton(driver);
@@ -15,7 +15,7 @@ public class LoginTest extends BaseTest {
         loginPage.clickLogin();
     }
 
-    @Test(groups = {"regression"})
+    @Test(groups = { "regression" })
     public void testInvalidLogin() {
         LoginPage loginPage = new LoginPage(driver);
         loginPage.clickLoginButton(driver);
