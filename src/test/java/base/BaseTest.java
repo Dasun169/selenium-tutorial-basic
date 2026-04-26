@@ -1,6 +1,6 @@
 package base;
 
-import org.example.constants.AppConstants;
+import org.example.pages.BasePage;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -57,8 +57,8 @@ public class BaseTest {
 
         // Apply window size and navigation
         driver.manage().window().setSize(new Dimension(width, height));
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(AppConstants.DEFAULT_TIMEOUT));
-        driver.get(AppConstants.BASE_URL);
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(BasePage.DEFAULT_TIMEOUT));
+        driver.get(BasePage.BASE_URL);
     }
 
     private void loadProperties() {
