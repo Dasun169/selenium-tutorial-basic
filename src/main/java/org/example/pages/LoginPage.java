@@ -1,66 +1,72 @@
 package org.example.pages;
 
+import org.example.utils.constants.LoginPageConstants;
+import utils.ReportStatus;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.time.Duration;
 
 public class LoginPage extends BasePage {
 
     // Locators
-    private static final String EMAIL_LOGIN = "//input[@id='emailField']";
-    private static final String PASSWORD_LOGIN = "//input[@id='pwFiled']";
-    private static final String LOGIN_BUTTON = "//button[@id='login-button']";
-    private static final String ERROR_MESSAGE = "//div[@class='alert alert-danger' and @role='alert']";
-    private static final String HAMBURG = "//button[@id='HeaderLinksDesktopMenu']";
-    private static final String LOGIN_BUTTON_FROM_HAM = "//a[@id='HeaderLinksLogin1']";
-
-    @FindBy(xpath = EMAIL_LOGIN)
-    private WebElement emailInput;
-
-    @FindBy(xpath = PASSWORD_LOGIN)
-    private WebElement passwordInput;
-
-    @FindBy(xpath = LOGIN_BUTTON)
-    private WebElement loginButton;
-
-    @FindBy(xpath = ERROR_MESSAGE)
-    private WebElement errorMessage;
-
-    @FindBy(xpath = HAMBURG)
-    private WebElement hamburg;
-
-    @FindBy(xpath = LOGIN_BUTTON_FROM_HAM)
-    private WebElement loginFromHam;
+    private static final By EMAIL_LOGIN = By.xpath("//input[@id='emailField']");
+    private static final By PASSWORD_LOGIN = By.xpath("//input[@id='pwFiled']");
+    private static final By LOGIN_BUTTON = By.xpath("//button[@id='login-button']");
+    private static final By ERROR_MESSAGE_HEADER = By.xpath("//div[@class='alert alert-danger' and @role='alert']");
+    private static final By SIGN_UP_LINK = By.xpath("//a[text()='Sign up']");
+    private static final By LBL_LOGIN_HEADING = By.xpath("//div[@class='login_box']/h3");
+    private static final By LBL_USERNAME_ERR = By.xpath("//input[@id='emailField']/following-sibling::p");
+    private static final By LBL_PASSWORD_ERR = By.xpath("//input[@id='pwFiled']/following-sibling::p");
 
     public LoginPage(WebDriver driver) {
         super(driver);
     }
 
-    public void clickLoginButton(WebDriver driver) {
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
-
-        wait.until(ExpectedConditions.elementToBeClickable(hamburg)).click();
-        wait.until(ExpectedConditions.elementToBeClickable(loginFromHam)).click();
-    }
-
     public void enterEmail(String email) {
-        emailInput.sendKeys(email);
+        waitForElementToVisible(EMAIL_LOGIN).sendKeys(email);
+        logStep("Entered email into login field", ReportStatus.INFO, false);
     }
 
     public void enterPassword(String password) {
-        passwordInput.sendKeys(password);
+        waitForElementToVisible(PASSWORD_LOGIN).sendKeys(password);
+        logStep("Entered password into login field", ReportStatus.INFO, false);
     }
 
     public void clickLogin() {
-        loginButton.click();
+        clickOnElement(LOGIN_BUTTON);
+        logStep("Clicked the login button", ReportStatus.INFO, true);
     }
 
     public boolean isErrorMessageDisplayed() {
-        return errorMessage.isDisplayed();
+        return isLocatorVisible(ERROR_MESSAGE_HEADER);
+    }
+
+    public void clickSignUpLink() {
+        clickOnElement(SIGN_UP_LINK);
+    }
+
+    public void loginPageValidation() {
+        waitForElementToBeVisible(LBL_LOGIN_HEADING, SHORT_TIMEOUT);
+        validateElementText(LBL_LOGIN_HEADING, LoginPageConstants.LOGIN_HEADING);
+        logStep("Verified login page heading is displayed", ReportStatus.PASS, true);
+    }
+
+    public void invalidPasswordValidation() {
+        validateElementText(ERROR_MESSAGE_HEADER, LoginPageConstants.INVALID_LOGIN_ERR_MSG);
+        logStep("Verified invalid password error message", ReportStatus.PASS, true);
+    }
+
+    public void invalidUserNameValidation() {
+        validateElementText(LBL_USERNAME_ERR, LoginPageConstants.INVALID_EMAIL_ERR_MSG);
+        logStep("Verified invalid username error validation", ReportStatus.PASS, true);
+    }
+
+    public void EmptyUserNamePasswordValidation() {
+        validateElementText(LBL_USERNAME_ERR, LoginPageConstants.EMPTY_EMAIL_ERR_MSG);
+        validateElementText(LBL_PASSWORD_ERR, LoginPageConstants.EMPTY_PASSWORD_ERR_MSG);
+        logStep("Verified empty username and password validation errors", ReportStatus.PASS, true);
+    }
+
+    public void navigateToLogin() {
+
     }
 }
