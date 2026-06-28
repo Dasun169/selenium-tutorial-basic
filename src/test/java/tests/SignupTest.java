@@ -2,6 +2,8 @@ package tests;
 
 import base.BaseTest;
 import org.example.pages.SignupPage;
+import org.example.pages.HomePage;
+import org.example.pages.LoginPage;
 import org.openqa.selenium.TimeoutException;
 import org.testng.annotations.Test;
 import java.util.Random;
@@ -12,10 +14,14 @@ public class SignupTest extends BaseTest {
     public static String signupPassword;
     public static String phoneNumber;
 
-    @Test(groups = {"signup", "smoke", "regression"})
+    @Test(groups = { "signup", "smoke", "regression" })
     public void testSuccessfulSignup() {
         SignupPage signupPage = new SignupPage(driver);
-        signupPage.clickSignUpButton(driver);
+        HomePage homePage = new HomePage(driver);
+        LoginPage loginPage = new LoginPage(driver);
+
+        homePage.clickLoginButton();
+        loginPage.clickSignUpLink();
 
         int randomNum = new Random().nextInt(10000); // 0-9999
         signupEmail = "testuser" + randomNum + "@example.com";
@@ -35,13 +41,14 @@ public class SignupTest extends BaseTest {
                     ". Password should have at least 8 characters, one uppercase letter, one digit, and one special character.");
         }
 
-        signupPage.fillSignupForm(driver, "John", "Doe", signupEmail, phoneNumber, signupPassword);
+        signupPage.fillSignupForm("John", "Doe", signupEmail, phoneNumber, signupPassword);
         try {
+            signupPage.clickSignUpWithEmailButton();
             signupPage.clickSignup();
         } catch (TimeoutException e) {
             System.out.println("Unable to click the Sign up button");
         }
-        signupPage.scrollAndClickLogout(driver);
+        homePage.scrollAndClickLogout();
     }
 
     private boolean isValidEmail(String email) {

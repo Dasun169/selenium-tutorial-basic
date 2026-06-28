@@ -10,10 +10,14 @@ import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.edge.EdgeOptions;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeSuite;
+import utils.ExtentReportManager;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.lang.reflect.Method;
 import java.time.Duration;
 import java.util.Properties;
 
@@ -22,8 +26,9 @@ public class BaseTest {
     protected Properties properties;
 
     @BeforeMethod(alwaysRun = true)
-    public void setUp() {
+    public void setUp(Method method) {
         loadProperties();
+        ExtentReportManager.setCurrentTestContext(getClass().getSimpleName(), method.getName());
 
         // Read configuration values (Command Line overrides config.properties)
         String browser = System.getProperty("browser", properties.getProperty("browser", "chrome")).toLowerCase();
@@ -71,10 +76,21 @@ public class BaseTest {
         }
     }
 
+    @BeforeSuite(alwaysRun = true)
+    public void initializeReport() {
+        ExtentReportManager.initReport();
+    }
+
+    @AfterSuite(alwaysRun = true)
+    public void finalizeReport() {
+        ExtentReportManager.generateReport();
+    }
+
     @AfterMethod(alwaysRun = true)
     public void tearDown() {
         if (driver != null) {
             driver.quit();
         }
+        ExtentReportManager.clearCurrentTestContext();
     }
 }
