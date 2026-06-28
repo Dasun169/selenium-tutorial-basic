@@ -9,6 +9,10 @@ allure-results/
 allure-report/
 allure-maven-plugin/
 
+# Test Data
+loginData.xlsx
+~$*
+
 ### IntelliJ IDEA ###
 .idea/
 *.iws
