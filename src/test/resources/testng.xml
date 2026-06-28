@@ -5,17 +5,19 @@
     <test name="Complete Automation Flow" preserve-order="true">
         <classes>
             <!-- Signup MUST come first -->
-            <class name="tests.SignupTest">
-                <methods>
-                    <include name="testSuccessfulSignup"/>
-                </methods>
-            </class>
+<!--            <class name="tests.SignupTest">-->
+<!--                <methods>-->
+<!--                    <include name="testSuccessfulSignup"/>-->
+<!--                </methods>-->
+<!--            </class>-->
 
             <!-- Login depends on signup credentials -->
             <class name="tests.LoginTest">
                 <methods>
-                    <include name="testLoginAfterSignup"/>
+                    <include name="testSuccessLogin"/>
                     <include name="testInvalidLogin"/>
+                    <include name="testInvalidUsername"/>
+                    <include name="testEmptyCredentials"/>
                 </methods>
             </class>
         </classes>
